@@ -1,2 +1,2 @@
 # DrawIt
-Multiplayer drawing game with socket.io
+Simple multiplayer drawing game with socket.io
