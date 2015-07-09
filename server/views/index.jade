@@ -1,0 +1,60 @@
+extends includes/layout
+block main-content
+	div.navbar.navbar-default
+		.container
+			div.navbar-responsive-collapse
+				header.navbar-collapse
+					.container
+						.navbar-header
+							a.navbar-brand(href="#/") 
+								img#logo-img(src="../../img/draw-logo.png" width="30" heigth="30") 
+								| Draw It !
+						.navbar-colapse.copalse
+							ul.nav.navbar-nav(id="main-nav")
+								li(id="nav-game")
+									a(href="#/") Game
+								li(id="nav-home")
+									a(href="#/") About
+							div#username-container
+	section#home-page.page.inactive
+		.container
+			.jumbotron
+				h1 Draw it !
+				p Login or register to start playing.
+			.panel.panel-default
+				.panel-heading About
+				.panel-body
+					p This is simple draw & guess multiplayer game.
+
+	section#game-page.page.inactive
+
+		div#rooms-wrapper
+			ul#users-online.nav.nav-pills
+				li
+					a(href="#")
+						| Users  
+						span#users-count.badge -
+			ul#rooms-header.nav.nav-pills
+				li
+					a(href="#")
+						| Rooms 
+						span#rooms-count.badge -
+			a#create-room-button.btn.btn-primary.btn-xs Create
+
+			div#rooms.list-group
+
+		div#chat-wrapper
+			div#conversation.jumbotron
+			input#message-data.form-control.input-sm
+			a#send-message-button.btn.btn-primary.btn-sm Send
+
+		div#canvas-wrapper.inactive
+			div#word-to-draw.alert.alert-dismissable.alert-info
+			div#room-info.well.well-sm
+			canvas(id="drawing-pad" width="700" height="500") Your browser doesn't support canvas.
+			div#letters-input
+			br
+			div#letters-wrapper
+
+	footer.breadcrumb.text-center
+		| &copy; Ilian Iliev 2014
