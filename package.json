@@ -19,6 +19,6 @@
     "express-session": "1.1.x",
     "jade": "1.3.x",
     "stylus": "0.44.x",
-    "socket.io": "1.0.6"
+    "socket.io": "1.0.x"
   }
 }
