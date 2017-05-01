@@ -17,10 +17,10 @@ var server = app.listen(config.port);
 // and prepare for the worst..
 process.on('uncaughtException', function (err) {
     console.log(err);
-    console.log("Node restarting...");
+    console.log('Node restarting...');
     server.close();
     server = app.listen(config.port);
-    console.log(`Server running on port ${config.port}...`);
+    console.log('Server running on port ' + config.port + '...');
 });
 
-console.log(`Server running on port ${config.port}...`);
+console.log('Server running on port ' + config.port + '...');
