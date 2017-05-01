@@ -2,10 +2,13 @@
 Drawer.createCanvas('drawing-pad');
 toastr.options.timeOut = 1700;
 
-var socket = io.connect('http://localhost:5000/', {
+var originalUrl = window.location.origin.slice(0, window.location.origin.lastIndexOf(':'));
+var socket = io.connect(originalUrl + ':5000/', {
         reconnection: false,
         forceNew: true
-    }),
+    });
+
+var 
     isPlaying = false,
     LOBBY_NAME = 'Lobby',
     currentRoom = LOBBY_NAME,

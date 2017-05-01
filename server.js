@@ -4,8 +4,7 @@ var env = process.env.NODE_ENV || 'development';
 
 var app = express();
 var config = require('./server/config/config')[env];
-var server = http.createServer(app);
-var io = require('socket.io').listen(process.env.PORT || 5000);
+var io = require('socket.io').listen(5000);
 
 require('./server/config/express')(app, config);
 require('./server/config/routes')(app);
