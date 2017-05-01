@@ -2,11 +2,12 @@
 Drawer.createCanvas('drawing-pad');
 toastr.options.timeOut = 1700;
 
-var originalUrl = window.location.origin.slice(0, window.location.origin.lastIndexOf(':'));
+var originalUrl = (location.protocol + '//' + location.host + location.pathname).replace(/:[0-9]+.+/, '');
 var socket = io.connect(originalUrl + ':5000/', {
         reconnection: false,
         forceNew: true
     });
+console.log(originalUrl);
 
 var 
     isPlaying = false,
