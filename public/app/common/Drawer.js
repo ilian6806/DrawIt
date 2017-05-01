@@ -195,13 +195,13 @@ var Drawer = (function() {
 
 		if (!canvas) {
 			logError('Can\'t find canvas element.');
-			return;
+			return this;
 		}
 
 		if (controls) {
 			$controls.show();
 			logError('Controls bar already loaded.');
-			return;
+			return this;
 		}
 
 		controls = document.createElement('div');

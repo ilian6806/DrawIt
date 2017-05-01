@@ -86,7 +86,11 @@ socket.on('disconnect', function (data) {
 });
 
 socket.on('error', function (data) {
-    console.log(data || 'error');
+    if (data.description) {
+        throw data.description;
+    } else {
+        throw data;
+    }
 });
 
 socket.on('connect_failed', function (data) {
