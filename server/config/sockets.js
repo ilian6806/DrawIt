@@ -65,7 +65,7 @@ module.exports = function(io, config) {
         });
         
         function deleteRoom(room) {
-            if (room == LOBBY_NAME) {
+            if (!room || room == LOBBY_NAME || rooms.indexOf(room) == -1) {
                 console.log('Deleting Lobby?');
                 return;
             }

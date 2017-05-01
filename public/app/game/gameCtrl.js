@@ -124,10 +124,29 @@ socket.on('updaterooms', function(rooms, current_room) {
     $rooms.empty();
 
     var roomsHTML = '';
+    var roomsArr = [];
 
     for (var name in rooms) {
+        roomsArr.push({
+            name: name,
+            usersCount: rooms[name].usersCount,
+            isLocked: rooms[name].isLocked
+        });
+    }
 
-        var room = rooms[name];
+    // Put lobby first, then available to join rooms
+    roomsArr.sort(function (a, b) {
+        if (a.name == LOBBY_NAME ) {
+            return -1;
+        } else {
+            return a.usersCount < b.usersCount ? -1 : 0;
+        }
+    });
+
+    for (var i = 0, len = roomsArr.length; i < len; i++) {
+
+        var room = roomsArr[i];
+        var name = room.name;
         var isLocked = room.isLocked;
         var lock = (isLocked) ? '<img src="../img/lock.png" width="20" height="20" class="lock-icon"/>' : '';
 
