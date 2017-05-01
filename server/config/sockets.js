@@ -28,7 +28,8 @@ module.exports = function(io, config) {
             return roomsObj;
         };
 
-        console.log('server connection');
+        console.log('Server connection');
+
         // when the client emits 'adduser', this listens and executes
         socket.on('adduser', function(username, color) {
             //username = 'User_' + socket.id.slice(0, 5); //temp
@@ -48,9 +49,11 @@ module.exports = function(io, config) {
             socket.emit('updatechat', SERVER_NAME, 'You have connected to ' + LOBBY_NAME, SERVER_COLOR);
             // echo to Lobby that a person has connected
             socket.broadcast.to(LOBBY_NAME).emit('updatechat', SERVER_NAME, username + ' has connected to this room', SERVER_COLOR);
+
             console.log('All sockets: ' + io.sockets.sockets.length);
             console.log('Rooms info: ');
             console.dir(socket.getRoomsInfo());
+
             io.sockets.emit('updateusers', io.sockets.sockets.length);
             socket.emit('updaterooms', socket.getRoomsInfo(), LOBBY_NAME);
         });
@@ -97,7 +100,6 @@ module.exports = function(io, config) {
             io.emit('updaterooms', socket.getRoomsInfo(), newroom);
 
             // if lonely player delete room
-            //console.dir(socket.adapter)
             if (socket.usersInRoom(oldroom) == 0 && oldroom != LOBBY_NAME) {
                 console.log('Deleted room: ' + oldroom);
                 deleteRoom(oldroom);
@@ -124,7 +126,7 @@ module.exports = function(io, config) {
         // when the user disconnects.. perform this
         socket.on('disconnect', function() {
             // remove the username from global usernames list
-            console.log('Uset leave: ' + socket.username)
+            console.log('User leave: ' + socket.username)
             delete users[socket.username];
             // update list of users in chat, client-side
             io.sockets.emit('updateusers', Object.keys(users));

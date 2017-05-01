@@ -34,7 +34,7 @@ function loginByModal() {
             var usernameLength = username.trim().length;
 
             if (usernameLength < 3 || usernameLength > 10) {
-                toastr.error('The password must be between 3 and 10 symbols.');
+                toastr.error('Your nickname must be between 3 and 10 symbols.');
             } else {
                 $.get('existingusername/' + username, function(usernameExist) {
                     if (usernameExist) {
@@ -42,7 +42,7 @@ function loginByModal() {
                     } else {
                         if ($('#dont-ask-again').prop('checked')) {
                             localStorage.setItem('showWelcomeDialog', 'false');
-                        }else {
+                        } else {
                             localStorage.setItem('showWelcomeDialog', 'true');
                         }
 
@@ -61,8 +61,6 @@ function loginByModal() {
 
 // on connection to server, ask for user's name with an anonymous callback
 socket.on('connect', function(){
-    console.log('connected')
-
     if (localStorage.getItem('showWelcomeDialog') == 'false' && localStorage.getItem('lastUsername')) {
         $.get('existingusername/' + localStorage.getItem('lastUsername'), function(usernameExist) {
             if (usernameExist) {
@@ -246,7 +244,7 @@ socket.on('clearing', function(){
 });
 
 function renderLetters(wordArr, realLength) {
-    console.log('render')
+
     var wrapperHtml = '';
     var inputHtml = '';
 
